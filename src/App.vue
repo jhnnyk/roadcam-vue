@@ -2,7 +2,7 @@
   <div id="app" class="text-gray-700 text-center">
     <TheHeader />
     <div class="container mb-8">
-      <p>hello world</p>
+      <p>hello <a href="/">world</a></p>
     </div>
   </div>
 </template>
@@ -17,12 +17,3 @@ export default {
   },
 };
 </script>
-
-<style lang="postcss">
-a {
-  @apply text-blue-800;
-  &:hover {
-    @apply underline;
-  }
-}
-</style>
