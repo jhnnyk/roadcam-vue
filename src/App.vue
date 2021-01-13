@@ -2,7 +2,7 @@
   <div id="app" class="text-gray-700 text-center">
     <TheHeader />
     <div class="container mb-8">
-      <p>hello <a href="/">world</a></p>
+      <p>hello world</p>
     </div>
   </div>
 </template>
