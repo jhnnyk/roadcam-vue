@@ -2,7 +2,7 @@
   <div id="app" class="text-gray-700 text-center">
     <TheHeader />
     <div class="container mb-8">
-      <p>hello world</p>
+      <router-view></router-view>
     </div>
   </div>
 </template>
