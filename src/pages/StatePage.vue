@@ -4,7 +4,7 @@
     {{ $route.params }}
     hwy count: {{ hwys.length }}
     <ul>
-      <li v-for="hwy in hwys" :key="hwy.index">
+      <li v-for="hwy in sortedHwys" :key="hwy.index">
         {{ hwy.slug }}
       </li>
     </ul>
@@ -48,6 +48,17 @@ export default {
         });
       }
     });
+  },
+
+  computed: {
+    sortedHwys() {
+      const sortHwys = this.hwys;
+      return sortHwys.sort((a, b) => {
+        if (a.slug > b.slug) return 1;
+        if (a.slug < b.slug) return -1;
+        return 0;
+      });
+    },
   },
 };
 </script>
