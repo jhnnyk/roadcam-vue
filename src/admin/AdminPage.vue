@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1 class="text-2xl uppercase p-4">Admin Page</h1>
-    <button @click="importOregonRoads" class="border rounded-xl px-2">
+    <!-- <button @click="importOregonRoads" class="border rounded-xl px-2">
       import Oregon
-    </button>
+    </button> -->
   </div>
 </template>
 
