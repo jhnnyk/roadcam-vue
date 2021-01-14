@@ -1,11 +1,20 @@
 <template>
   <div>
-    <h1>State Page here</h1>
-    {{ $route.params }}
-    hwy count: {{ hwys.length }}
-    <ul>
+    <p>
+      <router-link to="/">Home</router-link> >
+      <router-link :to="$route.params.stateSlug">
+        {{ stateName }}
+      </router-link>
+      > roads
+    </p>
+
+    <h1 class="text-4xl p-4">{{ stateName }} roads</h1>
+
+    <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <li v-for="hwy in sortedHwys" :key="hwy.index">
-        {{ hwy.slug }}
+        <router-link :to="{ name: 'HwyPage', params: { hwySlug: hwy.slug } }">{{
+          hwy.slug
+        }}</router-link>
       </li>
     </ul>
   </div>
@@ -19,12 +28,19 @@ export default {
 
   data() {
     return {
+      stateName: '',
       cams: [],
       hwys: [],
     };
   },
 
   async created() {
+    const docRef = db.collection('cams').doc(this.$route.params.stateSlug);
+
+    // get current location
+    const doc = await docRef.get();
+    this.stateName = doc.data().name;
+
     // get all cams for current location
     const snapshot = await db
       .collection('cams')
