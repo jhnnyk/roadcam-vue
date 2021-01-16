@@ -42,11 +42,7 @@ export default {
     this.stateName = doc.data().name;
 
     // get all cams for current location
-    const snapshot = await db
-      .collection('cams')
-      .doc(this.$route.params.stateSlug)
-      .collection('roads')
-      .get();
+    const snapshot = await docRef.collection('roads').get();
 
     await snapshot.forEach((doc) => {
       // add all cams to local state
