@@ -13,7 +13,11 @@
 
     <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <li v-for="cam in cams" :key="cam.index" class="p-4">
-        <router-link to="#">
+        <router-link
+          :to="
+            `/${$route.params.stateSlug}/roads/${$route.params.hwySlug}/${cam.slug}`
+          "
+        >
           {{ cam.name }}
           <img :src="cam.imageURL" :alt="cam.name" />
           {{ cam.description }}
