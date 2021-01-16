@@ -10,6 +10,16 @@
     </p>
 
     <h1 class="text-4xl p-4">{{ stateName }} - {{ $route.params.hwySlug }}</h1>
+
+    <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <li v-for="cam in cams" :key="cam.index" class="p-4">
+        <router-link to="#">
+          {{ cam.name }}
+          <img :src="cam.imageURL" :alt="cam.name" />
+          {{ cam.description }}
+        </router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -22,6 +32,7 @@ export default {
   data() {
     return {
       stateName: '',
+      cams: [],
     };
   },
 
@@ -31,6 +42,16 @@ export default {
     // get current location
     const doc = await docRef.get();
     this.stateName = doc.data().name;
+
+    // get all cameras for current hwy
+    const snapshot = await docRef
+      .collection('roads')
+      .where('routeSlug', '==', this.$route.params.hwySlug)
+      .get();
+
+    await snapshot.forEach((doc) => {
+      this.cams.push(doc.data());
+    });
   },
 };
 </script>
