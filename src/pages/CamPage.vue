@@ -1,6 +1,7 @@
 <template>
   <div>
-    cam page here
+    <p>cam page here</p>
+    {{ $route.params }}
   </div>
 </template>
 
