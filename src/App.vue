@@ -8,12 +8,16 @@
 </template>
 
 <script>
+import { store } from './store';
 import TheHeader from './components/TheHeader';
 
 export default {
   name: 'App',
   components: {
     TheHeader,
+  },
+  async created() {
+    await store.dispatch('getZones');
   },
 };
 </script>
