@@ -3,8 +3,8 @@ import VueRouter from 'vue-router';
 
 import HomePage from './pages/HomePage';
 import AdminPage from './admin/AdminPage.vue';
-import StatePage from './pages/StatePage.vue';
-import HwyPage from './pages/HwyPage.vue';
+import ZonePage from './pages/ZonePage.vue';
+import RoutePage from './pages/RoutePage.vue';
 import CamPage from './pages/CamPage.vue';
 
 Vue.use(VueRouter);
@@ -12,10 +12,14 @@ Vue.use(VueRouter);
 const routes = [
   { path: '/', name: 'HomePage', component: HomePage },
   { path: '/admin', name: 'AdminPage', component: AdminPage },
-  { path: '/:stateSlug', name: 'StatePage', component: StatePage },
-  { path: '/:stateSlug/roads/:hwySlug', name: 'HwyPage', component: HwyPage },
+  { path: '/:zoneSlug', name: 'ZonePage', component: ZonePage },
   {
-    path: '/:stateSlug/roads/:hwySlug/:slug',
+    path: '/:zoneSlug/roads/:routeSlug',
+    name: 'RoutePage',
+    component: RoutePage,
+  },
+  {
+    path: '/:zoneSlug/roads/:routeSlug/:slug',
     name: 'CamPage',
     component: CamPage,
   },

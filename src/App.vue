@@ -18,6 +18,10 @@ export default {
   },
   async created() {
     await store.dispatch('getZones');
+
+    if (this.$route.params.zoneSlug) {
+      await store.dispatch('selectZone', this.$route.params.zoneSlug);
+    }
   },
 };
 </script>

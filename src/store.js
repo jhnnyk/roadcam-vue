@@ -33,7 +33,7 @@ export const store = new Vuex.Store({
 
     selectZone: async (context, zoneSlug) => {
       const currentZone = context.state.zoneList.find(
-        (s) => s.zoneSlug === zoneSlug
+        (z) => z.zoneSlug === zoneSlug
       );
       context.commit('setCurrentZone', currentZone);
       // const docRef = db.collection('cams').doc(zoneSlug);
